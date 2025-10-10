@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mr.Sholex | Cafe Menu</title>
+  <link href="WebFonts/css/fontiran.css" rel="stylesheet">
+  <style>
+    :root{
+      --panel:#1b1b1b;        /* رنگ نوار دسته‌ها */
+      --gold:#d4b16a;         /* طلایی قاب‌ها و متن‌ها */
+      --radius:18px;
+      --max:420px;            /* عرض موبایل */
+      --circle:90px;          /* قطر دایره وسط */
+    }
+
+    html,body{
+      margin:0; padding:0; height:100%;
+      font-family:IRANSans;
+      background:#111;
+      display:flex; justify-content:center;
+      overflow-x:hidden;
+    }
+    
+
+    /* قاب موبایل و بک‌گراند فیکس */
+    .wrapper{
+      width:100%; max-width:var(--max); min-height:100vh; position:relative;
+      background:transparent; box-shadow:0 0 20px rgba(0,0,0,.35); border-radius:12px; overflow:hidden;
+    }
+   
+
+    /* هدر فیکس: عنوان + لوگو گرد */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding:10px 12px;
+      display:flex; align-items:center; justify-content:space-between;
+      background: rgba(17,17,17,.85);
+      backdrop-filter: blur(2px);
+      flex-direction: column;
+}
+    .title-img{height:56px; width:auto; display:block; margin-top: 15px;}
+    .logo-wrap{display:flex; align-items:center; gap:10px}
+    .logo-card{width:110px; height:110px; border-radius:50%; overflow:hidden;
+      background:#fff; border:2px solid var(--gold); box-shadow:0 8px 20px rgba(0,0,0,.35)}
+    .logo-card img{width:100%; height:100%; object-fit:cover}
+
+    /* بخش اصلی: فقط این اسکرول شود */
+    main{
+      max-width: var(--max);
+      margin: 0 auto;
+      height: calc(100vh - 58px);   /* 58px = ارتفاع فوتر پایین */
+      overflow-y: auto;             /* اسکرول فقط همین‌جا */
+      padding: 0 ;         /* فضای پایین برای فوتر */
+      box-sizing: border-box;
+      background: url(images/bg-02.jpg) center center / contain no-repeat fixed;
+      -ms-overflow-style: none;    /* IE و Edge قدیمی */
+      scrollbar-width: none; 
+}
+::-webkit-scrollbar {
+  display: none;               /* اسکرول‌بار مخفی */
+}
+
+    /* کارت دسته: نوار تیره با دایره وسط */
+    .category{margin:22px 10px}
+    .cat-bar{
+      position:relative;
+      display:grid; grid-template-columns: 1fr var(--circle) 1fr; align-items:center;
+      background:var(--panel); border-radius:24px; box-shadow:0 10px 24px rgba(0,0,0,.35);
+      border:1px solid rgba(212,177,106,.35);
+      min-height:64px; padding:10px 14px;
+      cursor:pointer;
+    }
+    .cat-fa{justify-self:start; color:#ffd37e; font-weight:800;margin-left: 17px}
+    .cat-en{justify-self:end; color:#e7cfa0; font-weight:800}
+    /* دایره مرکز */
+    .cat-badge{
+      position:absolute; left:50%; transform:translateX(-50%); top:50%; translate:0 -50%;
+      width:var(--circle); height:var(--circle); border-radius:50%;
+      background:#2a2a2a; box-shadow:0 6px 16px rgba(0,0,0,.5) inset;
+      border:3px solid rgba(212,177,106,.65);
+      display:grid; place-items:center; overflow:hidden;
+    }
+    .cat-badge img{width:100%; height:100%; object-fit:cover}
+
+    /* لیست آیتم‌ها */
+    .items{
+      margin:-8px 10px 0; background:#151515cc; backdrop-filter: blur(1px);
+      border:1px solid rgba(255,255,255,.08); border-radius:12px;
+      max-height:0; overflow:hidden; opacity:0; padding:0 10px;
+      transition:max-height .32s ease, opacity .32s ease, padding .32s ease;
+    }
+    .items.open{max-height:700px; opacity:1; padding:10px}
+    .row{display:flex; justify-content:space-between; align-items:center;
+      color:#eee; border-bottom:1px dashed rgba(255,255,255,.25); padding:8px 2px; font-weight:700}
+    .row:last-child{border-bottom:none}
+    .price{color:#ffd37e; direction:ltr; margin-right:8px}
+    .name{color:#f3f3f3}
+
+    /* ناوبری پایین (فوتر) */
+    .bottom-nav{
+      position:fixed; bottom:0; left:0; right:0; margin:0 auto; max-width:var(--max);
+      height:58px; display:flex; justify-content:space-around; align-items:center;
+      border-top:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(0deg, rgba(17,17,17,.85), rgba(17,17,17,.55));
+      color:#ddd; z-index:20;
+    }
+    .bn-item{background:none; border:none; color:#ddd; font-weight:800}
+
+    /* ریزتنظیمات برای عرض‌های خیلی کوچک */
+    @media (max-width:360px){
+      :root{ --circle:78px; }
+      .logo-card{width:96px; height:96px}
+      .title-img{height:48px}
+      .cat-bar{min-height:58px}
+    }
+
+
+    /* اینستاگرام */
+.instagram {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+.instagram a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #474747;
+  padding: 6px 25px;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #636363;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.instagram a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.instagram img {
+  width: 22px;
+  height: 22px;
+}
+
+.location, .location-map {
+  display: flex;
+  justify-content: center;
+  margin: 20px 10px 40px 10px;
+}
+
+.location a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.location a:hover {
+  background: #fafafa;
+  transform: scale(1.03);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.location img {
+  width: 22px;
+  height: 22px;
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <main id="app-wrap">
+            <header>
+              
+          
+              <div class="logo-wrap">
+                <div class="logo-card">
+                  <img src="images/logo-mrsholex.png" alt="Mr. Sholex Logo">
+                </div>
+              </div>
+
+              <img src="images/title.png" alt="Mr. Sholex" class="title-img">
+          
+              <!-- اینستاگرام -->
+              <div class="instagram">
+                <a href="https://instagram.com/yourcafe" target="_blank">
+                  <img src="images/Instagram_logo.png" alt="Instagram">
+                  <span>اینستاگرام</span>
+                </a>
+              </div>
+            </header>
+          
+            <div id="app"></div>
+          
+            <!-- لوکیشن -->
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d809.7645059539313!2d51.31130966964887!3d35.724791487036335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQzJzI5LjMiTiA1McKwMTgnNDMuMCJF!5e0!3m2!1sen!2s!4v1760120251364!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+          </main>
+          
+    
+       
+      </div>
+
+  <!-- داده‌های منو -->
+  <script id="menu-data" type="application/json">
+    {
+      "categories": [
+        { "key":"hot_drinks",   "fa":"نوشیدنی گرم", "en":"Hot Drinks", "icon":"images/cofee-01.png",
+          "items":[{"name":"اسپرسو","price":"140 T"},{"name":"لاته","price":"130 T"},{"name":"کاپوچینو","price":"120 T"}] },
+        { "key":"herbal_tea",   "fa":"دمنوش",            "en":"Herbal Tea", "icon":"images/herbal-tea.png",
+          "items":[{"name":"به لیمو","price":"110 T"},{"name":"چای سبز","price":"100 T"}] },
+        { "key":"cold_drinks",  "fa":"نوشیدنی سرد", "en":"Cold Drinks", "icon":"images/cold-drink.png",
+          "items":[{"name":"آیس کافی","price":"130 T"},{"name":"آیس موکا","price":"140 T"}] },
+        { "key":"mocktails",    "fa":"ماکتل‌ها",         "en":"Mocktails", "icon":"images/maktail.png",
+          "items":[{"name":"موهیتو","price":"200 T"},{"name":"لیموناد نعنایی","price":"180 T"}] },
+        { "key":"shakes",       "fa":"شیک‌ها",           "en":"Shakes", "icon":"images/shake.png",
+          "items":[{"name":"شیک شکلات","price":"220 T"},{"name":"شیک وانیل","price":"210 T"}] },
+        { "key":"breakfast",    "fa":"صبحانه",           "en":"Breakfast", "icon":"images/breakfast.png",
+          "items":[{"name":"املت","price":"180 T"},{"name":"صبحانه انگلیسی","price":"250 T"}] },
+        { "key":"appetizers",   "fa":"پیش غذا",          "en":"Appetizers", "icon":"images/salad.png",
+          "items":[{"name":"سیب‌زمینی سرخ‌کرده","price":"120 T"},{"name":"سالاد سزار","price":"200 T"}] }
+      ]
+    }
+  </script>
+
+  <!-- اسکریپت -->
+  <script>
+    const data = JSON.parse(document.getElementById('menu-data').textContent);
+    const app  = document.getElementById('app');
+
+    const categoryCard = cat => `
+      <section class="category" data-key="${cat.key}">
+        <div class="cat-bar">
+          <span class="cat-fa">${cat.fa}</span>
+          <div class="spacer"></div> <!-- ستون وسط؛ جای دایره -->
+          <span class="cat-en">${cat.en}</span>
+          <div class="cat-badge">${cat.icon?`<img src="${cat.icon}" alt="">`:``}</div>
+        </div>
+      </section>
+      <div class="items" id="items-${cat.key}">
+        ${cat.items.map(it => `
+          <div class="row">
+            <div class="name">${it.name}</div>
+            <div class="price">${it.price}</div>
+          </div>`).join('')}
+      </div>`;
+
+    function render(){
+      app.innerHTML = data.categories.map(categoryCard).join('');
+      const panels = document.querySelectorAll('.items');
+      document.querySelectorAll('.category').forEach(cat=>{
+        cat.addEventListener('click', ()=>{
+          const key   = cat.getAttribute('data-key');
+          const panel = document.getElementById('items-'+key);
+          const open  = panel.classList.contains('open');
+          panels.forEach(p => p.classList.remove('open'));
+          if(!open) panel.classList.add('open');
+        });
+      });
+    }
+    render();
+
+    // فوتر
+    document.querySelector('.bottom-nav').addEventListener('click', e=>{
+      const btn = e.target.closest('button'); if(!btn) return;
+      const act = btn.dataset.action;
+      if(act==='top' || act==='home') window.scrollTo({top:0, behavior:'smooth'});
+      if(act==='cats') document.querySelector('.category')?.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  </script>
+</body>
+</html>
