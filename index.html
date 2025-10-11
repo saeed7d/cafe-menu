@@ -216,25 +216,129 @@
 
   <!-- داده‌های منو -->
   <script id="menu-data" type="application/json">
+{
+  "brand": "Mr. Sholex Cafe",
+  "categories": [
     {
-      "categories": [
-        { "key":"hot_drinks",   "fa":"نوشیدنی گرم", "en":"Hot Drinks", "icon":"images/cofee-01.png",
-          "items":[{"name":"اسپرسو","price":"140 T"},{"name":"لاته","price":"130 T"},{"name":"کاپوچینو","price":"120 T"}] },
-        { "key":"herbal_tea",   "fa":"دمنوش",            "en":"Herbal Tea", "icon":"images/herbal-tea.png",
-          "items":[{"name":"به لیمو","price":"110 T"},{"name":"چای سبز","price":"100 T"}] },
-        { "key":"cold_drinks",  "fa":"نوشیدنی سرد", "en":"Cold Drinks", "icon":"images/cold-drink.png",
-          "items":[{"name":"آیس کافی","price":"130 T"},{"name":"آیس موکا","price":"140 T"}] },
-        { "key":"mocktails",    "fa":"ماکتل‌ها",         "en":"Mocktails", "icon":"images/maktail.png",
-          "items":[{"name":"موهیتو","price":"200 T"},{"name":"لیموناد نعنایی","price":"180 T"}] },
-        { "key":"shakes",       "fa":"شیک‌ها",           "en":"Shakes", "icon":"images/shake.png",
-          "items":[{"name":"شیک شکلات","price":"220 T"},{"name":"شیک وانیل","price":"210 T"}] },
-        { "key":"breakfast",    "fa":"صبحانه",           "en":"Breakfast", "icon":"images/breakfast.png",
-          "items":[{"name":"املت","price":"180 T"},{"name":"صبحانه انگلیسی","price":"250 T"}] },
-        { "key":"appetizers",   "fa":"پیش غذا",          "en":"Appetizers", "icon":"images/salad.png",
-          "items":[{"name":"سیب‌زمینی سرخ‌کرده","price":"120 T"},{"name":"سالاد سزار","price":"200 T"}] }
+      "key": "hot-drinks",
+      "fa": "نوشیدنی گرم",
+      "en": "Hot Drinks",
+      "icon": "images/hot-drink.png",
+      "items": [
+        {"name": "اسپرسو", "price": "70 T"},
+        {"name": "اسپرسو دبل", "price": "85 T"},
+        {"name": "آمریکانو", "price": "90 T"},
+        {"name": "موکا", "price": "115 T"},
+        {"name": "لاته", "price": "110 T"},
+        {"name": "لاته وانیل", "price": "120 T"},
+        {"name": "لاته فندوق", "price": "120 T"},
+        {"name": "کاپوچینو", "price": "100 T"},
+        {"name": "کارامل ماکیاتو", "price": "120 T"},
+        {"name": "شیر نسکافه", "price": "105 T"},
+        {"name": "شیر عسل دارچین", "price": "105 T"},
+        {"name": "چای ماسالا", "price": "90 T"},
+        {"name": "هات چاکلت", "price": "95 T"},
+        {"name": "وایت چاکلت", "price": "95 T"},
+        {"name": "چای سیاه تک‌ نفره", "price": "65 T"},
+        {"name": "چای دونفره", "price": "80 T"}
+      ]
+    },
+    {
+      "key": "herbal-tea",
+      "fa": "دمنوش",
+      "en": "Herbal Tea",
+      "icon": "images/herbal-tea.png",
+      "items": [
+        {"name": "دمنوش چای سبز", "price": "75 T"},
+        {"name": "دمنوش گل گاو زبان", "price": "75 T"},
+        {"name": "دمنوش به‌لیمو", "price": "75 T"},
+        {"name": "دمنوش بهار نارنج", "price": "75 T"}
+      ]
+    },
+    {
+      "key": "cold-drinks",
+      "fa": "نوشیدنی سرد",
+      "en": "Cold Drinks",
+      "icon": "images/cold-drink.png",
+      "items": [
+        {"name": "آیس لاته", "price": "130 T"},
+        {"name": "آیس کارامل", "price": "140 T"},
+        {"name": "آیس موکا", "price": "125 T"},
+        {"name": "آیس آمریکانو", "price": "115 T"},
+        {"name": "آفوگاتو", "price": "120 T"}
+      ]
+    },
+    {
+      "key": "mocktails",
+      "fa": "ماکتل‌ها",
+      "en": "Mocktails",
+      "icon": "images/maktail.png",
+      "items": [
+        {"name": "بلو هاوایی", "price": "180 T"},
+        {"name": "لیموناد", "price": "130 T"},
+        {"name": "موهیتو", "price": "145 T"},
+        {"name": "لاور", "price": "160 T"},
+        {"name": "کوکورنج", "price": "180 T"}
+      ]
+    },
+    {
+      "key": "shakes",
+      "fa": "شیک‌ها",
+      "en": "Shakes",
+      "icon": "images/shake.png",
+      "items": [
+        {"name": "شیک وانیل", "price": "180 T"},
+        {"name": "شیک شکلات", "price": "180 T"},
+        {"name": "شیک نوتلا", "price": "180 T"},
+        {"name": "شیک موز", "price": "180 T"},
+        {"name": "شیک اورئو", "price": "180 T"},
+        {"name": "شیک توت‌فرنگی", "price": "180 T"},
+        {"name": "شیک لوتوس", "price": "180 T"}
+      ]
+    },
+    {
+      "key": "breakfast",
+      "fa": "صبحانه",
+      "en": "Breakfast",
+      "icon": "images/breakfast.png",
+      "items": [
+        {"name": "املت", "price": "140 T"},
+        {"name": "نیمرو", "price": "100 T"},
+        {"name": "سوسیس تخم‌مرغ", "price": "160 T"},
+        {"name": "تخم‌مرغ خرما", "price": "160 T"},
+        {"name": "تست آووکادو", "price": "130 T"},
+        {"name": "ساندویچ اروپا", "price": "110 T"}
+      ]
+    },
+    {
+      "key": "appetizers",
+      "fa": "پیش‌غذا",
+      "en": "Appetizers",
+      "icon": "images/salad.png",
+      "items": [
+        {"name": "سالاد سزار", "price": "340 T"},
+        {"name": "سالاد فصل", "price": "180 T"},
+        {"name": "سیب‌زمینی سرخ‌کرده", "price": "160 T"},
+        {"name": "قارچ سوخاری", "price": "210 T"}
+      ]
+    },
+    {
+      "key": "main-dishes",
+      "fa": "غذای اصلی",
+      "en": "Main Dishes",
+      "icon": "images/hot-drink.png",
+      "items": [
+        {"name": "پاستا آلفردو", "price": "520 T"},
+        {"name": "پاستا پستو", "price": "540 T"},
+        {"name": "چیکن برگر", "price": "410 T"},
+        {"name": "بیف برگر", "price": "450 T"},
+        {"name": "فیله استریپس", "price": "480 T"}
       ]
     }
-  </script>
+  ]
+}
+</script>
+
 
   <!-- اسکریپت -->
   <script>
