@@ -166,17 +166,20 @@
         opacity: 1;
         padding: 10px;
       }
-      .row {
+      .row{
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+        padding: 8px 2px;
+
+      }
+       .row:last-child {
+        border-bottom: none;
+      }
+      .top {
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: #eee;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
-        padding: 8px 2px;
         font-weight: 700;
-      }
-      .row:last-child {
-        border-bottom: none;
       }
       .price {
         color: #ffd37e;
@@ -185,6 +188,12 @@
       }
       .name {
         color: #f3f3f3;
+      }
+      .desc {
+        font-size: 0.85rem;
+        color: #aaa;
+        margin-top: 20px;
+        line-height: 1.4;
       }
 
       /* ناوبری پایین (فوتر) */
@@ -451,7 +460,7 @@
               { "name": "بشقاب فیله گریل", "price": "360 T" },
               { "name": "بشقاب خوشمزه", "price": "380 T" },
               { "name": "برگر کلاسیک", "price": "340 T" },
-              { "name": "چیز برگر", "price": "370 T" },
+              { "name": "چیز برگر", "price": "370 T", "desc": "برگر ممتاز 150 گرم، سیب سرخ‌شده، پنیر ورقه‌ای، کاهو، گوجه، خیارشور" },
               { "name": "بیکن برگر", "price": "410 T" },
               { "name": "سوسیس بندری (پرسی)", "price": "240 T" },
               { "name": "سیب لاین هات داگ", "price": "210 T" },
@@ -482,10 +491,13 @@
         ${cat.items
           .map(
             (it) => `
-          <div class="row">
+         <div class="row">
+          <div class="top">
             <div class="name">${it.name}</div>
             <div class="price">${it.price}</div>
-          </div>`
+          </div>
+          ${it.desc ? `<div class="desc">${it.desc}</div>` : ""}
+        </div>`
           )
           .join("")}
       </div>`;
